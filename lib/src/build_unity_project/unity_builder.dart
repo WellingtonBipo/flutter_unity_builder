@@ -133,9 +133,9 @@ class UnityBuilder extends ScriptsRunner {
   Script? get _postBuild {
     switch (buildPlatform) {
       case BuildPlatform.ios:
-        return IosPostBuildScriptsRunner(pubspecInfo: pubspecInfo);
+      // return IosPostBuildScriptsRunner(pubspecInfo: pubspecInfo);
       case BuildPlatform.android:
-        return AndroidPostBuildScriptsRunner(pubspecInfo: pubspecInfo);
+      // return AndroidPostBuildScriptsRunner(pubspecInfo: pubspecInfo);
       case BuildPlatform.web:
         // return WebPostBuildScriptsRunner(pubspecInfo: pubspecInfo);
         return null;
