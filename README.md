@@ -1,39 +1,41 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+This package works with [flutter_unity_widget](https://pub.dev/packages/flutter_unity_widget) and Unity CLI to allow keep Unity project separeted from Flutter project.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Checkout speceific ref from Unity project
+- Build unity project through Unity CLI
+- Choose platform target from "web", "ios" or "android".
+- Copy built files inside platform folder
+- Run a post build to integrate unity projetct inside flutter project.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+- Add flutter_unity_builder to dev_dependencies.
+- Follow the steps described in flutter_unity_widget package.
+- Before use the CLI for the first time, open the unity project from GUI.
 
 ## Usage
+Run pub command chosing one of the targets "web", "ios" or "android".
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+```
+dart run flutter_unity_builder build_target=web
+```
+On pubspec.yaml on the root path of application, should set the configurations of flutter_unity_builder.
 
-```dart
-const like = 'sample';
+```yaml
+flutter_unity_builder:
+  unity_project:
+    repo_local_path: REQUIRED - Folder to checkout repository project
+    git:
+      url: REQUIRED
+      ref: REQUIRED
+      project_foler: NOT REQUIRED - Folder inside repository folder where unity project is located.
+  flutter_build_version_file_name: REQUIRED - File that holds version of Unity Project built.
+  unity_executable_location: REQUIRED - Unity executable program to execute Unity CLI
 ```
 
-## Additional information
+<!-- ## Additional information
 
 TODO: Tell users more about the package: where to find more information, how to 
 contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+from the package authors, and more. -->

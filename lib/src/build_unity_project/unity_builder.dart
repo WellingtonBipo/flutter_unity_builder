@@ -4,9 +4,6 @@ import 'package:path/path.dart' as p;
 
 import '../pubspec_info/pubspec_info.dart';
 import '../scripts_runner/scripts_runner.dart';
-import 'android_post_build_scripts_runner.dart';
-import 'ios_post_build_scripts_runner.dart';
-import 'web_post_build_scripts_runner.dart';
 
 enum BuildPlatform { ios, android, web }
 
@@ -22,7 +19,6 @@ class UnityBuilder extends ScriptsRunner {
   @override
   List<Script> get scripts => [
         _checkIfHaveToBuild,
-        // _changeBuildTarget,
         _build,
         if (_postBuild != null) _postBuild!,
         _copyVersionFromProjectFolderToBuildFolder,
@@ -70,25 +66,6 @@ class UnityBuilder extends ScriptsRunner {
         },
       );
 
-  // Script get _changeBuildTarget {
-  //   const logName = 'change_target';
-  //   return Script(
-  //     name: 'Change target to build project to ${buildPlatform.name}',
-  //     parseError: (e) => _errorFromLogFile(e, logName),
-  //     doScript: (options) async {
-  //       await options.shell.runExecutableArguments(
-  //         pubspecInfo.unityExecutablePath,
-  //         [
-  //           ..._firtsCommonArgs,
-  //           _logFilePath(logName),
-  //           '-buildTarget',
-  //           buildPlatform.name,
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
-
   Script get _build {
     const logName = 'build';
     return Script(
@@ -123,7 +100,6 @@ class UnityBuilder extends ScriptsRunner {
             p.absolute(projectPath),
             '-executeMethod',
             'FlutterUnityIntegration.Editor.Build.$buildMethodName',
-            // p.absolute(_unityBuildRelativePath),
           ],
         );
       },

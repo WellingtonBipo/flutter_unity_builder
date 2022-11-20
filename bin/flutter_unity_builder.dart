@@ -8,8 +8,6 @@ final _kbuildTarget = 'build_target=';
 void main(List<String> args) async {
   CheckoutAndBuild(
           pubspecInfo: await PubspecInfo.fromPubspec(),
-          // pubspecInfo: await PubspecInfo.fromPubspec(
-          //     '${Directory.current.path}/example/pubspec.yaml')
           buildPlatform: _getBuildPlatform(args))
       .run();
 }
